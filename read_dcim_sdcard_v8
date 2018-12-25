@@ -4,7 +4,7 @@
 trap 'echo finished with status $?' 0
 set -e
 set -x
-destination=/storage/emulated/0/Canon465
+destination=/storage/emulated/0/CanonStuart12
 mkdir -p $destination
 for volume in /mnt/media_rw/[0-9A-F][0-9A-F][0-9A-F][0-9A-F]-[0-9A-F][0-9A-F][0-9A-F][0-9A-F]
 do
