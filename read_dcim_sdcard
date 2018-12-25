@@ -1,12 +1,11 @@
 #!/bin/sh
 # Rsync photos from my camera's SD card plugged into my tablet's USB port via an OTG card reader
-# use ConnectBot to run "su -c 'sh /the/name/of/this/file'"
+# use ConnectBot to run "exec su -c 'sh -x /the/name/of/this/file'"
 # tested with Android 8.1.0 (LineageOS 15.1)
 trap 'echo failed with status $?' 0
 set -e
 destination=/storage/emulated/0/CanonStuart12
 mkdir -p $destination
-set -x
 for volume in /mnt/media_rw/[0-9A-F][0-9A-F][0-9A-F][0-9A-F]-[0-9A-F][0-9A-F][0-9A-F][0-9A-F]
 do
     rsync --partial --times --recursive --include='*/' --include='*.JPG' --exclude='*' $volume/DCIM/1??CANON/ $destination/.
