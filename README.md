@@ -1,2 +1,2 @@
 # android_scripts
-script to run on android
+scripts to run on android
