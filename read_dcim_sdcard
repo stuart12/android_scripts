@@ -8,7 +8,7 @@ destination=/storage/emulated/0/CanonStuart12
 mkdir -p $destination
 for volume in /mnt/media_rw/[0-9A-F][0-9A-F][0-9A-F][0-9A-F]-[0-9A-F][0-9A-F][0-9A-F][0-9A-F]
 do
-    rsync --partial --times --recursive --include='*/' --include='*.JPG' --exclude='*' $volume/DCIM/1??CANON/ $destination/.
+    rsync --progress --times --recursive --include='*/' --include='*.JPG' --exclude='*' $volume/DCIM/1??CANON/ $destination/.
     umount $volume
 done
 for f in $destination/*
