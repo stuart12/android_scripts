@@ -4,7 +4,11 @@
 trap 'echo finished with status $?' 0
 set -e
 set -x
-d=/storage/emulated/0/Canon465/
+d=/storage/emulated/0/Canon465
 mkdir -p $d
 rsync --partial --times /mnt/media_rw/[0-9A-F][0-9A-F][0-9A-F][0-9A-F]-[0-9A-F][0-9A-F][0-9A-F][0-9A-F]/DCIM/1??CANON/*.JPG $d/.
-umount /mnt/media_rw/[0-9A-F][0-9A-F][0-9A-F][0-9A-F]-[0-9A-F][0-9A-F][0-9A-F][0-9A-F]
+#umount /mnt/media_rw/[0-9A-F][0-9A-F][0-9A-F][0-9A-F]-[0-9A-F][0-9A-F][0-9A-F][0-9A-F]
+for f in $d/*
+do
+    am broadcast -a android.intent.action.MEDIA_SCANNER_SCAN_FILE -d "file://$f"
+done
