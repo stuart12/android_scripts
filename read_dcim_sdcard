@@ -14,7 +14,7 @@ do
 done
 for f in $destination/*
 do
-    am broadcast -a android.intent.action.MEDIA_SCANNER_SCAN_FILE -d "file://$f"
+    am broadcast -a android.intent.action.MEDIA_SCANNER_SCAN_FILE -d "file://$f" > /dev/null
     set +x
 done
 trap '' 0
