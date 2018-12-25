@@ -1,8 +1,10 @@
 #!/bin/sh
-# Rsync photos from my cmaera's SD card
+# Rsync photos from my camera's SD card
 # for Android 8.1 (LineageOS 15)
-trap 'echo finished with $status' 0
+trap 'echo finished with status $?' 0
 set -e
 set -x
-rsync --partial --times /mnt/media_rw/[0-9A-F][0-9A-F][0-9A-F][0-9A-F]-[0-9A-F][0-9A-F][0-9A-F][0-9A-F]/DCIM/1??CANON/*.JPG /storage/emulated/*/Canon465/.
+d=/storage/emulated/0/Canon465/
+mkdir -p $d
+rsync --partial --times /mnt/media_rw/[0-9A-F][0-9A-F][0-9A-F][0-9A-F]-[0-9A-F][0-9A-F][0-9A-F][0-9A-F]/DCIM/1??CANON/*.JPG $d/.
 umount /mnt/media_rw/[0-9A-F][0-9A-F][0-9A-F][0-9A-F]-[0-9A-F][0-9A-F][0-9A-F][0-9A-F]
