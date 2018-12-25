@@ -1,2 +1,11 @@
 #!/bin/sh
+# Rsync photos from my cmaera's SD card
+# for Android 8.1 (LineageOS 15)
+trap 'echo finished $status' 0
+set -e
+set -x
 date
+rsync -P --size-only /mnt/media_rw/[0-9A-F][0-9A-F][0-9A-F][0-9A-F]-[0-9A-F][0-9A-F][0-9A-F][0-9A-F]/DCIM/1??CANON/*.JPG /storage/emulated/*/Canon465/.
+umount /mnt/media_rw/[0-9A-F][0-9A-F][0-9A-F][0-9A-F]-[0-9A-F][0-9
+A-F][0-9A-F][0-9A-F]/
+echo success
